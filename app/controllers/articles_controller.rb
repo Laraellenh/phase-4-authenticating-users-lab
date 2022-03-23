@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-
+ 
   def index
     articles = Article.all.includes(:user).order(created_at: :desc)
     render json: articles, each_serializer: ArticleListSerializer
